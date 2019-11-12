@@ -4,7 +4,7 @@
 
 * East Midlands branch meeting 1st November 2019 for https://www.aphanalysts.org/ 
 
-I used this presentation to cover the steps I took (and mistakes I made) in creating one table from many sources in SQL for mortality surveillance within a large NHS secondary care provicer Trust.
+I used this presentation to cover the steps I took (and mistakes I made) in creating one table from many sources in SQL for mortality surveillance within a large NHS secondary care provider Trust.
 
 ## MortalityR.html
 
