@@ -1,0 +1,158 @@
+---
+title: "Equality in NHS Analysis"
+author: "Zoë Turner"
+date: "March 2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, results = 'asis')
+
+library(waffle)
+library(tidyverse)
+library(viridis)
+
+```
+
+## "Hello, my name is..."
+
+Zoë Turner
+
+For the last 3 years I've worked as a Senior Information Analyst 
+
+```{r Trust, out.width = "500px"}
+
+knitr::include_graphics("company_logo.jpg")
+
+```
+
+
+## Some statistics about the NHS
+
+Women/Female
+
+```{r NHS Stats, out.width="600px"}
+
+knitr::include_graphics("NHSWorkforceStats.PNG")
+
+```
+
+# And in analyst teams...
+
+## Programming
+
+#rstats
+
+Twitter: @NHSrCommunity
+
+
+```{r NHSR, out.width = "250px"}
+
+knitr::include_graphics("NHSRLogo.png")
+
+```
+
+## But...
+
+20% of attendees at local FREE R courses and events are (assumed not declared) female.
+
+Not all attendees are NHS staff.
+
+
+## Meaningful?
+
+20% = 20 in 100
+
+```{r 2 in 100}
+
+percentage <- c(female = 20, male = 80)
+
+waffle(percentage, rows = 10,
+       colors = c("#73D055FF", "#FDE725FF"), title = "Percentage")
+
+```
+
+
+## 1 in 5
+
+20% also equals:
+
+```{r 1 in 5}
+
+fraction <- c(female = 1, male = 4)
+
+waffle(fraction, rows = 1,
+       colors = c("#73D055FF", "#FDE725FF"), title = "Fraction")
+
+
+```
+
+# What we see...
+
+## In the training
+
+```{r 4 in 20}
+
+training <- c(female = 4, male = 16)
+
+waffle(training, rows = 4,
+       colors = c("#73D055FF", "#FDE725FF"), title = "Training")
+
+```
+
+## Our Meetup
+
+```{r 2 in 10}
+
+meetup <- c(me = 1, female = 1, male = 8)
+
+waffle(meetup, rows = 2,
+       colors = c("#440154FF","#73D055FF", "#FDE725FF"), title = "Last Meetup")
+
+```
+
+## R Ladies
+
+For people who identify as a woman or gender minority and are interested in the R programming language
+
+https://rladies.org/
+
+
+```{r RLadies, out.width = "250px"}
+
+knitr::include_graphics("R-LadiesGlobal.png")
+
+```
+
+## Our Analyst team
+
+```{r managers}
+
+managers <- c(female = 4, male = 1)
+
+analysts <- c(female = 2, male = 19)
+
+iron(
+  
+waffle(managers, rows = 1,
+       colors = c("#440154FF","#73D055FF"), title = "Managers"),
+
+waffle(analysts, rows = 3,
+       colors = c("#440154FF","#73D055FF"), title = "Analysts")
+)
+
+```
+
+## Help wanted
+
+Could you give a talk? We also arrange meetings for analysts through:
+
+https://www.aphanalysts.org/
+
+Twitter: @apha_analysts
+
+Do you want to work in the NHS?
+
+https://www.jobs.nhs.uk/xi/search_vacancy/
+
+Contact me: @Letxuga007 and @DataScienceNott
