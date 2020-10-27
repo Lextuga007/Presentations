@@ -24,3 +24,9 @@ I presented a 5 minute Lightning Talk at Women In Tech in Nottingham to show som
 It was also a way of showing how 20% is more meaningful when related to a real situation.
 
 The presentation was built in R Markdown and used the viridis package for accessible and contrasting colours, and the waffle package to represent numbers/people.
+
+## NHS-R Community Meetup
+
+Repository is [here]{https://github.com/Lextuga007/NHS-R-Community-Meetup)
+
+The presentation was a brief introduction to the [qicharts2](https://cran.r-project.org/web/packages/qicharts2/vignettes/qicharts2.html) package and used Crimea war numbers as collected by Florence Nightingale. 
