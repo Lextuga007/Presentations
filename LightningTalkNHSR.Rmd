@@ -22,7 +22,7 @@ For the last 3 years I've worked as a Senior Information Analyst
 
 ```{r Trust, out.width = "500px"}
 
-knitr::include_graphics("company_logo.jpg")
+knitr::include_graphics("images/company_logo.jpg")
 
 ```
 
@@ -33,7 +33,7 @@ Women/Female
 
 ```{r NHS Stats, out.width="600px"}
 
-knitr::include_graphics("NHSWorkforceStats.PNG")
+knitr::include_graphics("images/NHSWorkforceStats.PNG")
 
 ```
 
@@ -48,7 +48,7 @@ Twitter: @NHSrCommunity
 
 ```{r NHSR, out.width = "250px"}
 
-knitr::include_graphics("NHSRLogo.png")
+knitr::include_graphics("images/NHSRLogo.png")
 
 ```
 
@@ -120,7 +120,7 @@ https://rladies.org/
 
 ```{r RLadies, out.width = "250px"}
 
-knitr::include_graphics("R-LadiesGlobal.png")
+knitr::include_graphics("images/R-LadiesGlobal.png")
 
 ```
 
