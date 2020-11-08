@@ -15,7 +15,7 @@ Some updates made including blog urls
 
 I used this presentation to show how R had been used to create a mortality surveillance report. 
 
-Note that there is a blank slide which is a graph created using the dygraph package. This doesn't appear in pdfs but reproducible code to create a chart (with generated data) can be followed at https://nhsrcommunity.com/blog/dygraphs or from https://github.com/Lextuga007/NHSR_blogs/tree/master/Dygraphs_ZTurner_201909 
+**Note that there is a blank slide** which is a graph created using the dygraph package. This doesn't appear in pdfs but reproducible code to create a chart (with generated data) can be followed at https://nhsrcommunity.com/blog/dygraphs or from https://github.com/Lextuga007/NHSR_blogs/tree/master/Dygraphs_ZTurner_201909 
 
 ## LightningTalkNHSR.html
 
@@ -24,3 +24,9 @@ I presented a 5 minute Lightning Talk at Women In Tech in Nottingham to show som
 It was also a way of showing how 20% is more meaningful when related to a real situation.
 
 The presentation was built in R Markdown and used the viridis package for accessible and contrasting colours, and the waffle package to represent numbers/people.
+
+## NHS-R Community Meetup
+
+Repository is [here]{https://github.com/Lextuga007/NHS-R-Community-Meetup)
+
+The presentation was a brief introduction to the [qicharts2](https://cran.r-project.org/web/packages/qicharts2/vignettes/qicharts2.html) package and used Crimea war numbers as collected by Florence Nightingale. 
