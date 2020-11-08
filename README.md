@@ -27,6 +27,12 @@ The presentation was built in R Markdown and used the viridis package for access
 
 ## NHS-R Community Meetup
 
-Repository is [here]{https://github.com/Lextuga007/NHS-R-Community-Meetup)
+Repository is [here](https://github.com/Lextuga007/NHS-R-Community-Meetup)
 
 The presentation was a brief introduction to the [qicharts2](https://cran.r-project.org/web/packages/qicharts2/vignettes/qicharts2.html) package and used Crimea war numbers as collected by Florence Nightingale. 
+
+## NHS-R Conference 2020
+
+Lightning talk: Why do I need to learn R when I can use SQL? on Monday 9th November 2020. 
+
+Slides incorporated the NHS and Nottinghamshire Healthcare NHS Foundation Trust fonts, colours and backgrounds courtesy of the [workshop](https://spcanelon.github.io/xaringan-basics-and-beyond/index.html) by Silvia Canelón.
