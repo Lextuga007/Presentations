@@ -54,6 +54,7 @@ hr {
   padding-right:      4em;
   font-size:          80%;
   line-height:        1.3em;
+  color:              #FFFFFF;
 }
 
 /*-- Slide number --*/
@@ -182,6 +183,5 @@ blockquote {
 .red        { color:   #DA291C }
 .warmyellow { color:   #FFB81C }
 .white      { color:   #FFFFFF }
-
 
 
