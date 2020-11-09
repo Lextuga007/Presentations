@@ -86,6 +86,7 @@ class: title-slide, right, bottom
 </video>
 ]]
 
+.footnote[SPC = Statistical Process Control]
 ---
 
 background-image: url("https://media.giphy.com/media/KZNGTvSbtlHR90BpyM/giphy.gif")
@@ -220,6 +221,8 @@ example %>%
 ... roughly 34 lines of SQL code
 
 <img src="images/sqlFillScreenshot.PNG" height="390px"/>
+
+.footnote[CTE = Common Text Expression]
 
 ---
 
