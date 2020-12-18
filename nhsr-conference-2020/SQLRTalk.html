@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Why do I need to learn R when I can use SQL?</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Zoë Turner, Senior Information Analyst" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/panelset-0.2.4/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.2.4/panelset.js"></script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.4/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.4/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link rel="stylesheet" href="css/nhsr.css" type="text/css" />
+    <link rel="stylesheet" href="css/nhsr-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+name: hello
+class: title-slide, right, bottom
+
+# Why do I need to learn R when I can use SQL?
+----
+## Zoë Turner, Senior Information Analyst
+## November 2020
+
+---
+
+### Why a talk on this?
+
+.pull-left[
+
+ &lt;img src="https://media.giphy.com/media/L0lW0pxa3HbD128xO9/giphy.gif" height="450px" /&gt;
+
+]
+
+.pull-right[
+
+* Analysts in the NHS and Local Authorities use SQL and Excel for their analysis.
+
+* 'I can do everything I learned in the introduction course in SQL. Why do I need R?'
+
+* Really, what's all the fuss about?
+]
+
+
+---
+
+### SQL SPC
+
+.left-col[.center[
+&lt;video width="640" height="470" controls&gt;
+  &lt;source src="videos/SPC_SQL_code_words.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+]]
+
+.footnote[SPC = Statistical Process Control]
+---
+
+background-image: url("https://media.giphy.com/media/KZNGTvSbtlHR90BpyM/giphy.gif")
+background-position: center
+background-size: contain
+
+---
+
+
+### A better way is to...
+
+
+.pull-left[Use a package like [qicharts2](https://cran.r-project.org/web/packages/qicharts2/index.html) from CRAN (or [runcharter](https://github.com/johnmackintosh/runcharter) or [spcccharter](https://github.com/johnmackintosh/spccharter) by @_johnmackintosh and code can be as small as this...
+
+
+```r
+qic(month, n, days,
+    data     = hospital_infections,
+*   facets   = infection ~ hospital,
+    chart    = 'u',
+    multiply = 10000,
+    scales   = 'free_y',
+    x.angle  = 45,
+    title    = 'Hospital acquired infections in the Capital Region of Denmark',
+    ylab     = 'Cases per 10,000 risk days',
+    xlab     = 'Month')
+```
+]
+
+--
+
+.pull-right[...creating multiple charts in one go 
+![](SQLRTalk_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
+]
+
+
+---
+class: middle, center
+
+## But this isn't about charts, this is about code...
+
+So let's compare R and SQL coding to create dummy/fake data
+
+---
+
+### SQL 
+
+.pull-left[
+
+ &lt;img src="images/sqlFillDown.PNG" height="450px" /&gt;
+ ]
+
+.pull-right[
+
+* 76 lines of code
+
+* I may have many years' experience but I spent several hours learning to produce fake data
+
+* this requires a server to run, even when using dummy data
+
+]
+
+---
+
+### And now in R
+
+.pull-left[
+
+![](images/rInSQLForComparison.PNG)
+
+]
+
+.pull-right[
+
+* 25 lines of code
+
+* I have 2 years' experience and took less than an hour to produce fake data
+
+* This only requires R/RStudio (free software) and existing hardware (my laptop)
+]
+
+---
+
+
+### Filling down 
+
+Imagine you have some data and you want to [fill the empty cells with previous row value](https://stackoverflow.com/questions/3465847/sql-how-to-fill-empty-cells-with-previous-row-value): 
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Dates &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Customer &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 20100101 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 20100102 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 20100101 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 20100102 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 20100101 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 20100102 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 39 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 20100101 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 42 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 20100102 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 20100101 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 20100102 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+### SQL code requires CTE
+&lt;br/&gt;
+
+... roughly 34 lines of SQL code
+
+&lt;img src="images/sqlFillScreenshot.PNG" height="390px"/&gt;
+
+.footnote[CTE = Common Text Expression]
+
+---
+
+### R code 
+&lt;br/&gt;
+
+.pull-left[
+In contrast, R only take 1 line of code 
+
+
+```r
+example %&gt;% 
+  fill(Rule, .direction = 'down')
+```
+]
+.pull-right[
+leaving lots of space for a GIF
+
+![](https://media.giphy.com/media/xT8qBhrlNooHBYR9f2/giphy.gif)
+]
+---
+
+### Still not convinced...
+
+.pull-left[
+&lt;img src="https://media.giphy.com/media/yj5oYHjoIwv28/giphy.gif" width="90%"/&gt;
+]
+
+.pull-right[
+**Let's see if I can convince you with...**
+
+]
+
+---
+
+### Two words...
+
+--
+
+![](https://media.giphy.com/media/dwpbGUm18BAfm/giphy.gif)
+
+.pull-right[
+
+# Pivot Tables
+
+]
+
+---
+
+### Pivoting 
+
+.panelset[
+.panel[.panel-name[Long to Wide data]
+
+.pull-left[
+Let's take a small long data set like this...
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Patient &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; System &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; DateofBirth_sk &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19680103 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; RIO &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19680103 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; IAPT &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19680103 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19970509 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; RIO &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19471209 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; S1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19660321 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; IAPT &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19780131 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+.pull-right[
+and turn it into this wide...
+
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Patient &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; S1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; RIO &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; IAPT &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+] &lt;!--end--&gt;
+
+.panel[.panel-name[SQL operators]
+.green[Hard coded]
+
+
+```r
+SELECT *
+FROM 
+(
+  SELECT Patient, Service, DateofBirth_sk
+  FROM #patients
+) AS src
+PIVOT
+(
+  COUNT(DateofBirth_sk)
+  FOR Service IN ([S1], [RIO], [IAPT])
+) AS pivt;
+```
+] &lt;!--end--&gt;
+
+.panel[.panel-name[SQL Joins]
+.green[Code is verbose]
+
+
+```r
+SELECT p.Patient
+,CASE WHEN S1.Patient IS NULL THEN 0 ELSE 1 END AS S1
+,CASE WHEN rio.Patient IS NULL THEN 0 ELSE 1 END AS RIO
+,CASE WHEN iapt.Patient IS NULL THEN 0 ELSE 1 END AS IAPT
+FROM #patients AS p
+LEFT JOIN (SELECT Patient
+			,Service
+			FROM #patients
+			WHERE Service = 'S1') AS S1 ON S1.Patient = p.Patient
+LEFT JOIN (SELECT Patient
+			,Service
+			FROM #patients
+			WHERE Service = 'RIO') AS rio ON rio.Patient = p.Patient
+GROUP BY p.Patient
+,CASE WHEN S1.Patient IS NULL THEN 0 ELSE 1 END
+,CASE WHEN rio.Patient IS NULL THEN 0 ELSE 1 END
+```
+] &lt;!--end--&gt;
+
+.panel[.panel-name[SQL CASE WHEN]
+.green[Flexible and concise]
+
+```r
+SELECT Patient
+,DateofBirth_sk
+,S1				    = MAX(CASE WHEN Service = 'S1' THEN 1 ELSE 0 END)
+,Rio					= MAX(CASE WHEN Service = 'RIO' THEN 1 ELSE 0 END)
+,IAPT					= MAX(CASE WHEN Service = 'IAPT' THEN 1 ELSE 0 END)
+FROM #patients
+GROUP BY Patient
+,DateofBirth_sk
+ORDER BY Patient
+```
+] &lt;!--end--&gt;
+
+.panel[.panel-name[R code]
+.green[About the same amount of code in this example but many more services could be added with no need for more coding.]
+
+
+```r
+library(tidyr)
+
+wideData &lt;- examplePivot %&gt;% 
+  mutate(value = 1) %&gt;%
+  select(-DateofBirth_sk) %&gt;% 
+  pivot_wider(names_from = System,
+              values_from = value, 
+              values_fill = 0)
+```
+
+] &lt;!--end--&gt;
+
+.panel[.panel-name[R code - cont]
+.green[It's also possible to move data from wide to long and repeat this within the same amount of code... as many times as required]
+
+
+```r
+library(tidyr)
+
+examplePivot %&gt;% 
+  mutate(value = 1) %&gt;%
+  select(-DateofBirth_sk) %&gt;% 
+  pivot_wider(names_from = System,
+              values_from = value,
+              values_fill = 0) %&gt;% 
+  pivot_longer(cols = -Patient,
+               names_to = "service",
+               values_to = "values")
+```
+
+] &lt;!--end--&gt;
+] &lt;!--end of panelset--&gt;
+
+---
+
+### Dummy Data
+
+.panelset[
+.panel[.panel-name[SQL Dummy Data]
+.green[Based on real life example of having multiple databases]
+
+
+```r
+CREATE TABLE #patients (
+   Patient integer,
+     Service varchar(5),
+	 DateofBirth_sk int
+);
+INSERT  INTO #Patients
+    VALUES  (1, 'S1', 19680103),
+			(1, 'RIO', 19680103),
+			(1, 'IAPT', 19680103),
+			(3, 'S1', 19970509),
+			(4, 'RIO', 19471209),
+			(5, 'S1', 19660321),
+			(6, 'IAPT', 19780131)
+```
+] &lt;!--end--&gt;
+
+.panel[.panel-name[R Dummy Data]
+.green[Based on real life example of having multiple databases]
+
+
+```r
+examplePivot &lt;- tibble::tribble(
+   ~Patient, ~System, ~DateofBirth_sk,
+  1, 'S1', 19680103,
+  1, 'RIO', 19680103,
+  1, 'IAPT', 19680103,
+  3, 'S1', 19970509,
+  4, 'RIO', 19471209,
+  5, 'S1', 19660321,
+  6, 'IAPT', 19780131)
+
+examplePivot %&gt;% 
+  knitr::kable(format = "html")
+```
+] &lt;!--end--&gt;
+] &lt;!--end of panelset--&gt;
+---
+name: goodbye
+class: middle, inverse
+
+# **Thank you!**
+&lt;br/&gt;
+
+Acknowledgements: the professional look of this presentation, using NHS and Nottinghamshire Healthcare NHS Foundation Trust colour branding, exists because of the amazing work of Silvia Canelón, details of the workshops she ran at the [NHS-R Community conference](https://spcanelon.github.io/xaringan-basics-and-beyond/index.html).
+
+Thanks too to Simon Wellesley-Miller who ran an [R Markdown workshop](https://github.com/SimonW-M/Markdown) at the conference, where I finally found out how to get GIFs into my slides.
+
+.warmyellow[It goes without saying that SQL can't produce presentations.]
+
+[&lt;svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"&gt;&lt;/path&gt;&lt;/svg&gt; @Letxuga007](https://twitter.com/Letxuga007)&lt;br/&gt;
+[&lt;svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"&gt;&lt;/path&gt;&lt;/svg&gt; @Lextuga007](https://github.com/Lextuga007)&lt;br/&gt;
+[&lt;svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M440 6.5L24 246.4c-34.4 19.9-31.1 70.8 5.7 85.9L144 379.6V464c0 46.4 59.2 65.5 86.6 28.6l43.8-59.1 111.9 46.2c5.9 2.4 12.1 3.6 18.3 3.6 8.2 0 16.3-2.1 23.6-6.2 12.8-7.2 21.6-20 23.9-34.5l59.4-387.2c6.1-40.1-36.9-68.8-71.5-48.9zM192 464v-64.6l36.6 15.1L192 464zm212.6-28.7l-153.8-63.5L391 169.5c10.7-15.5-9.5-33.5-23.7-21.2L155.8 332.6 48 288 464 48l-59.4 387.3z"&gt;&lt;/path&gt;&lt;/svg&gt; zoe.turner2@notthshc.nhs.uk](mailto:zoe.turner2@nottshc.nhs.uk)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "googlecode",
+"highlightLines": true,
+"highlightLanguage": "r",
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<!--Hat-tip: https://www.garrickadenbuie.com/blog/xaringan-tip-logo-all-slides/-->
+<style>
+.logo {
+  background-image: url(img/nottshc.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 2.5em;
+  right: 1em;
+  width: 250px;
+  height: 150px;
+  z-index: 0;
+}
+
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    ':not(.inverse)' +
+    ':not(.hide-logo)' 
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
