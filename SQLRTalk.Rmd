@@ -32,9 +32,21 @@ library(magick)
 library(qicharts2)
 library(tidyverse)
 library(stringr)
-library(nhsrtheme)
 library(xaringan)
+
+# Packages not on CRAN
+
+# install.packages("remotes")
+# remotes::install_github("mitchelloharawild/icon")
+library(icon) # icons need to be loaded to view so run following code if not already done
+# icon::download_fontawesome()
+
+# install.packages("devtools")
+#devtools::install_github("gadenbuie/xaringanExtra")
 library(xaringanExtra)
+
+
+# Note video will only run when opened in browser, won't run in Xaringan view or when knitted.
 
 xaringanExtra::use_panelset()
 xaringanExtra::use_clipboard()
@@ -450,6 +462,6 @@ Thanks too to Simon Wellesley-Miller who ran an [R Markdown workshop](https://gi
 
 .warmyellow[It goes without saying that SQL can't produce presentations.]
 
-[`r icon::fa("twitter")` @Letxuga007](https://twitter.com/Letxuga007)<br/>
-[`r icon::fa("github")` @Lextuga007](https://github.com/Lextuga007)<br/>
-[`r icon::fa("paper-plane")` zoe.turner2@notthshc.nhs.uk](mailto:zoe.turner2@nottshc.nhs.uk)
+[`r icon::fontawesome("twitter")` @Letxuga007](https://twitter.com/Letxuga007)<br/>
+[`r icon::fontawesome("github")` @Lextuga007](https://github.com/Lextuga007)<br/>
+[`r icon::fontawesome("paper-plane")` zoe.turner2@notthshc.nhs.uk](mailto:zoe.turner2@nottshc.nhs.uk)
