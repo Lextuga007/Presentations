@@ -15,7 +15,7 @@ Some updates made including blog urls
 
 I used this presentation to show how R had been used to create a mortality surveillance report. 
 
-**Note that there is a blank slide** which is a graph created using the dygraph package. This doesn't appear in pdfs but reproducible code to create a chart (with generated data) can be followed at https://nhsrcommunity.com/blog/dygraphs or from https://github.com/Lextuga007/NHSR_blogs/tree/main/Dygraphs_ZTurner_201909 
+**Note that there is a blank slide** which is a graph created using the dygraph package. This doesn't appear in pdfs but reproducible code to create a chart (with generated data) can be followed at https://nhsrcommunity.com/blog/dygraphs or from https://github.com/Lextuga007/NHSR_blogs/blob/master/Dygraphs_ZTurner_201909/Dygraphs%20blog.Rmd
 
 ## [LightningTalkNHSR](https://github.com/Lextuga007/Presentations/blob/main/women-in-tech/LightningTalkNHSR.pdf)
 
