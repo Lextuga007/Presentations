@@ -413,7 +413,7 @@ heatmap <- ons_births %>%
 
 
 births_plot <- ggplot(heatmap, aes(x = dates, y = month_full, fill = average))+
-  geom_tile(colour = "White", show.legend = FALSE)+
+  geom_tile(colour = "White", show.legend = TRUE)+
   theme_classic() +
   scale_fill_distiller(palette = "Spectral") +
   scale_y_discrete(name = "") +
@@ -422,4 +422,5 @@ births_plot <- ggplot(heatmap, aes(x = dates, y = month_full, fill = average))+
   theme(axis.line.y = element_blank(), 
         plot.title.position = "plot",
         axis.text = element_text(colour = "Black"), 
-        plot.title = element_text(size = rel(2.3)))
+        #plot.title = element_text(size = rel(2.0)),
+        legend.position = "left")
