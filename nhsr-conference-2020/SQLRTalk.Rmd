@@ -11,12 +11,14 @@ output:
       - css/nhsr-fonts.css
     lib_dir: libs
     seal: false
+    self-contained: true
     nature:
       highlightStyle: googlecode
       highlightLines: true
       highlightLanguage: ["r"]
       countIncrementalSlides: false
       ratio: "16:9"
+      beforeInit: "macros.js"
     includes:
       after_body: [css/insert-logo.html]
 
