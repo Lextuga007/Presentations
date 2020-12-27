@@ -18,7 +18,6 @@ output:
       highlightLanguage: ["r"]
       countIncrementalSlides: false
       ratio: "16:9"
-      beforeInit: "macros.js"
     includes:
       after_body: [css/insert-logo.html]
 
