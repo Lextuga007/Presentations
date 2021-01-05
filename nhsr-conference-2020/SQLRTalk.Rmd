@@ -51,6 +51,7 @@ library(xaringanExtra)
 
 xaringanExtra::use_panelset()
 xaringanExtra::use_clipboard()
+xaringanExtra::use_share_again() # need to get the slide button on html view
 
 source("data/generateRdata.R")
 
