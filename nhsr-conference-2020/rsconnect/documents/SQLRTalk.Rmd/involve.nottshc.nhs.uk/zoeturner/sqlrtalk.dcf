@@ -1,0 +1,12 @@
+name: sqlrtalk
+title: SQLRTalk
+username: zoeturner
+account: zoeturner
+server: involve.nottshc.nhs.uk
+hostUrl: https://involve.nottshc.nhs.uk:8443/__api__
+appId: 41
+bundleId: 1092
+url: https://involve.nottshc.nhs.uk:8443/content/41/
+when: 1609928042.10484
+asMultiple: FALSE
+asStatic: TRUE
