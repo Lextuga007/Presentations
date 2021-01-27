@@ -154,7 +154,7 @@ So let's compare R and SQL coding to create dummy/fake data
 
 .pull-left[
 
- <img src="images/sqlFillDown.PNG" height="450px" />
+ <img src="img/sqlFillDown.PNG" height="450px" />
  ]
 
 .pull-right[
@@ -173,7 +173,7 @@ So let's compare R and SQL coding to create dummy/fake data
 
 .pull-left[
 
-![](images/rInSQLForComparison.PNG)
+![](img/rInSQLForComparison.PNG)
 
 ]
 
@@ -234,7 +234,7 @@ example %>%
 
 ... roughly 34 lines of SQL code
 
-<img src="images/sqlFillScreenshot.PNG" height="390px"/>
+<img src="img/sqlFillScreenshot.PNG" height="390px"/>
 
 .footnote[CTE = Common Text Expression]
 

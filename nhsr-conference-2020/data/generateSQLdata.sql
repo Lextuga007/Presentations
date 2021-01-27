@@ -59,14 +59,14 @@ checking the dob column, if it is null it gets the previous non NULL value.*/
           AS (SELECT    subjects,
                         ISNULL(dob, 0) AS dob, /* Ensure we start with no NULL values for each dob */
                         RowNum
-              FROM      CustCte cur
+              FROM      CustCte AS cur
               WHERE     RowNum = 1
               UNION ALL
               SELECT    Curr.subjects,
                         ISNULL(curr.dob, prev.dob) AS dob,
                         Curr.RowNum
               FROM      CustCte AS curr
-              INNER JOIN CleanCust prev ON curr.subjects = prev.subjects
+              INNER JOIN CleanCust AS prev ON curr.subjects = prev.subjects
                                            AND curr.RowNum = prev.RowNum + 1)
 
 /* Update the base table using the result set from the recursive CTE */
