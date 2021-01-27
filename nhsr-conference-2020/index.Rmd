@@ -20,7 +20,6 @@ output:
       ratio: "16:9"
     includes:
       after_body: [css/insert-logo.html]
-
 ---
 
 ```{r libs, include=FALSE}
