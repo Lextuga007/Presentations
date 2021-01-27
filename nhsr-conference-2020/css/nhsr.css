@@ -80,7 +80,7 @@ hr {
 }
 
 .remark-slide-content {
-  background-image:    url(../img/subsequent-slide.PNG);
+  background-image:    url(subsequent-slide.PNG);
   background-size:     cover;
 }
 
@@ -160,7 +160,7 @@ blockquote {
 
 /*-- NHS organisation logo --*/
 .title-slide {
-  background-image:    url(../img/nottshc.PNG), url(../img/first-slide-background.PNG);
+  background-image:    url(nottshc.PNG), url(first-slide-background.PNG);
   background-position: 97% 15%;
   background-size:     500px, cover;
   padding-bottom: 150px;
