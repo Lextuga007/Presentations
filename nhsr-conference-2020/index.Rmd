@@ -25,8 +25,6 @@ output:
 
 ```{r libs, include=FALSE}
 
-#knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, results = 'asis')
-
 #Runs packages if available
 library(knitr)
 library(magick)
@@ -48,10 +46,13 @@ library(xaringanExtra)
 
 
 # Note video will only run when opened in browser, won't run in Xaringan view or when knitted.
+```
 
-xaringanExtra::use_panelset()
-xaringanExtra::use_clipboard()
-xaringanExtra::use_share_again() # need to get the slide button on html view
+```{r share-again, echo=FALSE}
+xaringanExtra::use_share_again()
+```
+
+```{r set-up, echo=FALSE}
 
 source("data/generateRdata.R")
 
