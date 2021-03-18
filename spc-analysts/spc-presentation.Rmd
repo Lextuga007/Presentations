@@ -42,6 +42,9 @@ opts_chunk$set(echo = FALSE,
 # scale_fill_discrete <- partial(scale_fill_nhs, discrete = TRUE)
 # scale_colour_continuous <- partial(scale_colour_nhs, discrete = FALSE)
 # scale_colour_discrete <- partial(scale_colour_nhs, discrete = TRUE)
+
+library(xaringanExtra)
+xaringanExtra::use_share_again() # need to get the slide button on html view
 ```
 
 ```{r echo=FALSE}
