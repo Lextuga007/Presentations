@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>NHS-R — Statistical Process Control Charts</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Zoë Turner" />
+    <script src="libs/header-attrs-2.7/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/nhsr.css" type="text/css" />
+    <link rel="stylesheet" href="css/nhsr-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: title-slide, left, bottom
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(img/logo-nhs-blue.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide-logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+
+# NHS-R &amp;mdash; Statistical Process Control Charts
+----
+## **Examples of how to produce SPCs in R**
+### Zoë Turner
+### March 2021
+
+---
+
+## Package details
+
+
+```r
+install.packages("qicharts2")
+library(qicharts2)
+```
+
+&lt;/br&gt;
+
+- Available on CRAN
+
+- Comes with sample healthcare datasets 
+
+- Created by Jacob Anhøj, a doctor in Denmark
+
+
+---
+
+# Why I like this package ...
+
+## Reasons to be joyful 
+
+* I skim instructions
+
+* I just _get_ healthcare data (not plants and certainly not cars)
+
+* Reproducible examples in the vignette
+
+* More than one type of SPC available
+
+---
+
+## Like this | Snapshot of the vignette:
+
+&lt;img src="img/FirstRunChart2.png" width="1000px" /&gt;
+
+---
+
+# Nightingale's Crimea...
+
+## Getting data
+
+Copied data manually from this [site](https://understandinguncertainty.org/node/214)
+
+using a GUI (graphical user interface) package called `library(datapasta)` to copy directly to R
+
+Saved in a script for quick retrieval later
+
+
+```r
+source("Crimea.R")
+```
+
+---
+
+## Being #rstats
+
+There is a package for that... even for historical data!
+
+
+```r
+install.packages("HistData")
+library(HistData)
+
+data("Nightingale")
+```
+
+---
+
+## And the coxcomb can be recreated...
+
+### ... and animated as a GIF
+
+Credit: Sian Bladon, Winner of the most [innovative FloViz Competition 2020 ](https://statsyss.wordpress.com/2020/05/11/floviz-challenge-entries/) from the Young Statisticians Section of the Royal Statistical Society
+
+&lt;img src="https://github.com/sianbladon/Data-Viz/blob/master/FloViz-Challenge-May-2020/floviz.gif?raw=true" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Replot in qicharts2
+
+## Run chart code
+
+Built on ggplot2 
+
+
+```r
+qic(startMonth,number,
+    data     = crimeaLong,
+    chart    = 'run',
+    decimals = 0, 
+    x.angle  = 90,
+    title    = 'Run chart deaths in Crimea War',
+    ylab     = 'Number of deaths',
+    xlab     = 'Month'
+)
+```
+
+---
+
+# Replot in qicharts2
+
+## Run chart code
+
+![](spc-presentation_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+
+---
+
+# Sprinkle ggplot2 magic...
+
+## Facets
+
+
+```r
+qic(startMonth,number,
+    data     = crimeaLong,
+    chart    = 'run',
+    decimals = 0, 
+*   facets   = ~death_cause,
+    x.angle  = 90,
+    title    = 'Run chart deaths in Crimea War',
+    ylab     = 'Number of deaths',
+    xlab     = 'Month'
+)
+```
+
+---
+
+# Sprinkle ggplot2 magic...
+
+## Facets
+
+![](spc-presentation_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+
+
+---
+
+# Just imagine...
+
+Producing... 
+
+* 30 incident categories
+
+--
+
+* 10 wards
+
+--
+
+* 25 LSOAs
+
+--
+
+Looking for for signals. That's a lot of individual plots to do in SQL or Excel. 
+
+---
+
+## Moving Range SPC
+
+
+```r
+qic(startMonth,number,
+    data     = crimeaLong,
+*   chart    = 'mr',
+    decimals = 0, 
+    facet    = ~death_cause,
+    x.angle  = 90,
+    title    = 'SPC mr chart deaths in Crimea War',
+    ylab     = 'Number of deaths',
+    xlab     = 'Month'
+)
+```
+
+---
+
+## mr Chart (or is that Mr Chart!)
+
+As seen on Twitter @Letxuga007  
+
+![](spc-presentation_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+---
+
+# Other SPC charts are available
+
+## Rare events - time between
+
+The code requires a count of days difference.
+
+.footnote[Cabg = coronary artery bypass operations]
+
+
+```r
+# Altered slightly from the qicharts2 vignette
+
+fatalities &lt;- cabg %&gt;% 
+  filter(death) %&gt;% 
+  mutate(dt = date - lag(date))
+```
+
+---
+
+## T-chart
+
+Time between used for rare events like deaths from operations
+
+
+```r
+tchart &lt;- qic(dt,
+    data  = fatalities,
+*   chart = 't',
+    title = 'Days between deaths (T chart)',
+    ylab  = 'Days',
+    xlab  = 'Death #')
+
+tchart
+```
+
+---
+
+## T-chart
+
+A point above the upper control limit is a good thing!
+
+
+![](spc-presentation_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+
+---
+
+# Breaking into the chart
+
+## Getting the data
+
+The numbers generated to create the charts can be viewed/saved by typing:
+
+
+```r
+newObject &lt;- tchart$data
+```
+
+---
+
+## When is this useful?
+
+In this blog: https://www.r-bloggers.com/backed-by-data/ @_johnmackintosh shows how to:
+
+* tweak the charts
+
+--
+
+&lt;br&gt;
+
+And I used this code
+
+* to include only those charts with a signal
+* to link back to the data to say which patients/incidents/wards were behind the points. This data can be automatically generated in a report
+
+--
+
+John Mackintosh has also created 2 specific R packages:
+
+[runcharter](https://github.com/johnmackintosh/runcharter) &lt;/br&gt;
+--
+[spccharter](https://github.com/johnmackintosh/spccharter)
+
+---
+
+# Other interesting things
+
+## Further information
+
+SPC Shiny dashboards are being discussed on the NHS-R Slack site in the channel #proj-shiny-spc
+
+Will be based on some of the work started by [Chris Reading](https://github.com/chrisreading01/SPCwizard) ([patch](https://github.com/ChrisBeeley/SPCwizard/tree/patch-1) by Chris Beeley) and Simon Wellesley-Miller.
+
+- please join us and contribute 
+
+ link: [nhsrcommunity.slack.com](nhsrcommunity.slack.com) 
+
+- Twitter: [@NHSrCommunity](https://twitter.com/NHSrCommunity)
+- Me: [@Letxuga007](https://twitter.com/Letxuga007)
+
+
+.footnote[The **nhsr theme** was designed by [Silvia Canelon](https://silvia.rbind.io) for, and with feedback from, the [NHS-R Community](https://github.com/nhs-r-community), following the [NHS identity guidelines](https://www.england.nhs.uk/nhsidentity/identity-guidelines/).]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "googlecode",
+"highlightLines": true,
+"highlightLanguage": "r",
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
