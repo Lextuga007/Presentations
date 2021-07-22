@@ -96,3 +96,15 @@ Presentation on AphA and NHS-R (not given on the day):
 * [Slides](https://lextuga007.github.io/Presentations/midlands-huddle/apha-nhsr.html#3)
 
 * [Code](https://github.com/Lextuga007/Presentations/tree/main/midlands-huddle)
+
+---
+
+## [SHAPE Atlas](https://shapeatlas.net/)- Strategic Health Asset Planning and Evaluation
+
+A presentation for the Midlands Analyst Network where I showed how I'd used the tool to explore the public transport times between some of the Nottinghamshire Healthcare NHS Foundation Trust sites.
+
+Slides created with {xaringan} and I used the `xaringanExtra::use_scribble(pen_color = "#003087")` during the presentation to highlight the boundaries.
+
+* [Slides](https://lextuga007.github.io/Presentations/shape-public-transport/SHAPE-public-transport-time.html#1)
+
+* [Code](https://github.com/Lextuga007/Presentations/tree/main/shape-public-transport)
