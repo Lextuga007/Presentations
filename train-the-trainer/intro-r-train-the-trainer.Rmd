@@ -1,0 +1,448 @@
+---
+title: "NHS-R Community Introduction to R and R Studio"
+subtitle: "Train the Trainer"
+author: "Zoë Turner"
+institute: "NHS-R Community"
+date: "January 2022"
+output:
+  xaringan::moon_reader:
+    css: 
+      - default
+      - css/nhsr.css
+      - css/nhsr-fonts.css
+    lib_dir: libs
+    seal: false
+    self_contained: true
+    nature:
+      highlightStyle: googlecode
+      highlightLines: true
+      highlightLanguage: ["r"]
+      countIncrementalSlides: false
+      ratio: "16:9"
+      includePresenterNotes: true
+---
+class: title-slide, left, bottom
+
+```{r setup, include = FALSE}
+library(knitr)
+library(tidyverse)
+library(here)
+### Packages not on CRAN ###
+
+# install.packages("devtools")
+#devtools::install_github("gadenbuie/xaringanExtra")
+library(xaringanExtra)
+xaringanExtra::use_share_again() # need to get the slide button on html view
+xaringanExtra::use_scribble(pen_color = "#003087") # add pens to slides
+
+# set default options
+opts_chunk$set(echo = FALSE,
+               fig.width = 7.252,
+               fig.height = 4,
+               dpi = 300,
+               dev.args = list(type = "cairo"),
+               eval = TRUE,
+               warning = FALSE,
+               message = FALSE,
+               error = FALSE)
+
+
+```
+
+# `r rmarkdown::metadata$title`
+----
+## **`r rmarkdown::metadata$subtitle`**
+### `r rmarkdown::metadata$author` | `r rmarkdown::metadata$date`
+</br>
+
+---
+class: title-slide, right, top
+background-image: url(https://images.pexels.com/photos/301926/pexels-photo-301926.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)
+background-position: 75% 75%
+background-size: cover
+
+---
+class: center, middle, inverse
+
+# Agenda
+
+2 hours 
+ 
+Introductions
+  
+Quick run through of materials
+  
+Technical
+  
+Tips and tricks
+  
+---
+class: middle
+
+# Introductions
+
+Questions for you!
+
+* What is your name?
+* Why do you want to train the introduction to R and R Studio course?
+* What are you most apprehensive about when thinking about training?
+
+???
+
+Get people talking! Introduce themselves to the group if small enough.
+
+Like the actual course, this is also an informal space where there is no "stupid question".
+
+---
+
+class: inverse, middle, center
+
+# Quick run through
+
+---
+
+# Materials
+
+All the materials are free to use and published online:
+
+- [GitHub repository](https://github.com/nhs-r-community/intro_r)
+- [Links to rendered slides](https://nhs-r-community.github.io/intro_r/)
+- [Prettified website](https://philosopher-analyst.netlify.app/collection/) - free to use but hosted by Netlify through my account. Has [pre-work set up](https://philosopher-analyst.netlify.app/collection/nhsr-intro/prework/) and [FAQs](https://philosopher-analyst.netlify.app/collection/nhsr-intro/faq/)
+
+<img class="center" alt="Bookcase from ceiling to floor with a ladder to the left to access the books at the top" src=https://images.pexels.com/photos/220326/pexels-photo-220326.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 width="40%"/>
+
+???
+Open each link and look around the resources. Not everyone will necessarily be familiar with things like GitHub.
+
+---
+
+# RMarkdown
+
+* Teaching RMarkdown can be tricky - see this [blog](https://www.apreshill.com/blog/2020-05-how-i-teach-r-markdown/) from Alison Hill who is amazing at all things RMarkdown
+
+
+<img class="center" alt="Woman teaching a child to knit. Photo by Alex Green from Pexels" src=https://images.pexels.com/photos/5692181/pexels-photo-5692181.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 width="30%"/>
+
+
+???
+I'm reluctant to drop RMarkdown from the introduction course as, although it comes at the end of the course when everyone is tired (if it's a day workshop), it's such a powerful tool to combine all that people learn in the day. 
+
+Saying that, the NHS-R Community has commissioned a specific [RMarkdown workshop](https://github.com/nhs-r-community/intro_rmd) that was run at the 2021 conference so I often mention this as a future possibility in courses through NHS-R Community.
+
+---
+
+# Run through the section
+
+* Use the wizard template for creating a template RMarkdown 
+* Detail the main parts:
+  - YAML
+  - Visual Markdown Editor (in the latest version of R Studio)
+  - Markdown language
+  - Index of headers (button next to the compass/A for Visual Markdown Editor)
+  - Chunk names in bottom of Editor
+  - Global options for chunks (warnings, error, eval, echo)
+  - Point out that the code is not ggplot2 but uses base R for the plot </br>
+
+* Show how to Knit the document (it will require saving)
+* Suggest changing the title and then re-knitting
+* Then show my more detailed RMarkdown 
+
+
+???
+Use the opportunity to highlight the work of other NHS-R Community members. For example, the RMarkdown examples are heavily based upon the work by Simon Wellesley-Miller who has both created a readable, standalone RMarkdown document and was recorded in a workshop at an NHS-R Community conference.
+
+---
+
+## Flexibility
+
+* You don't have to follow the section order
+
+???
+1 The order of the slides was from the [original presentation slides](https://github.com/andrw-jns/r_workshop) which were based on the order of the [R for Data Science](https://r4ds.had.co.nz/) book so starts with ggplot2.
+
+--
+
+* You don't have to do a one day workshop
+
+???
+2 The course can be broken up over 2 or more days to suit you and who you are training.
+
+--
+
+* You don't have to train all the sections
+
+???
+3 [Section 11](https://philosopher-analyst.netlify.app/collection/nhsr-intro/11-sql-connection/) on SQL connections was written by Chris Mainey and Emily Jones of NHS England/Improvement and I haven't been able to pace the day (yet!) to cover this appropriately.
+--
+
+* You don't have to have a helper
+
+???
+4 It's fantastic to have a helper but there can be occasions when that's not possible. NHS-R Community always sit on the call just in case you drop your own connection and are super fast at replying to emails to the central [email](mailto:nhs.rcommunity@nhs.net) and, of course, there is always [Slack](nhsrcommunity.slack.com).
+
+--
+
+* End on a positive - You can contribute to changes to the course
+
+???
+5 Contributions and corrections can be made to the materials through [pull requests](https://github.com/nhs-r-community/intro_r#cloning-this-repository) or [issues](https://github.com/nhs-r-community/intro_r/issues)
+
+
+---
+
+class: inverse, middle, center
+
+# Technical - Zoom
+
+---
+
+# Beware!
+
+* Zoom restrictions in Trusts 
+* Overlays other programs 
+* Chat needs to be clicked on to open
+* Late arrivals or people dropping in and out lose chat history
+
+<img class="center" alt="A laptop with a tablet screen on a desk with a lamp and white chair. Photo by Elvis from Pexels" src=https://images.pexels.com/photos/2528118/pexels-photo-2528118.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 width="30%"/>
+
+???
+
+1 The licence is owned and run by NHS-R Community but sharing of the link may be blocked by your security
+
+2 Try to have two screens if possible.
+
+The most comfortable set up I've found is to have the R Studio Cloud on half a screen, with the slides on the other half. Being {xaringan} they automatically resize. I leave the laptop screen for Zoom to see participants and the chat. 
+
+---
+
+# Attendee communication
+
+* People often work with their camera off!
+* The chat is very popular for asking questions/clarification
+* Screen sharing has been really helpful for all attendees
+
+<img class="center" alt="An empty lecture theatre" src=https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 width="40%"/>
+
+
+???
+1 It can feel like you are talking to yourself. If you are comfortable watch for your own face. There is some research that this isn't a good thing necessarily but it's guaranteed feedback in terms of seeing a human face. 
+
+3 Eagle eyed attendees sometimes spot the problem before I do!
+---
+
+# Tricks 
+
+* Possible to write directly onto your screen  
+* Break out rooms are available
+* Settings for sharing the screen by other people
+* Settings for messaging people in the waiting room or muting people as they enter automatically
+
+<img class="center" alt="Dog looking expectantly at a hand holding a ball. Photo by Blue Bird from Pexels" src=https://images.pexels.com/photos/7055937/pexels-photo-7055937.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 width="40%"/>
+
+
+???
+2 I've only used break out rooms when I've had a helper to splitting into R Studio v own computer set up or if someone is struggling and needs more interaction to solve the issue.
+
+---
+
+class: inverse, middle, center
+
+# Technical - R Studio Cloud
+
+???
+
+Take a quick break?
+
+---
+
+# Benefits
+
+Use NHS-R Workspace - log in via Gmail, R Studio account of GitHub
+
+* All packages are installed
+* Default settings for appearance
+* Useful to set up two accounts 
+* README in R Studio includes private links
+
+
+???
+
+3 Two accounts - one to see things as a trainer (and doesn't have admin rights if they have been given on the workspace)
+
+If you work from the original workspace, rather than setting up a new one, then remember to reset the settings that you've changed ([Restore .RData](https://nhs-r-community.github.io/intro_r/01-workshop_intro.html#26), [Text and appearance](https://nhs-r-community.github.io/intro_r/01-workshop_intro.html#27))
+
+---
+
+# Beware!
+
+* Cloud projects are different
+* Keyboard shortcut to create a new script opens an [Incognito browser window](https://nhs-r-community.github.io/intro_r/01-workshop_intro.html#23) 
+* Although rare, the Cloud has been unavailable to the group
+* Project creation isn't necessarily intuitive 
+* It doesn't work on Internet Explorer 
+
+<img class="center" alt="Clouds in a blue sky" src=https://images.pexels.com/photos/53594/blue-clouds-day-fluffy-53594.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 width="40%"/>
+
+
+???
+1 [slide6 of Using R Studio section](https://nhs-r-community.github.io/intro_r/02-workshop_projects.html#6)
+
+4 [Instructions for pre-work](https://philosopher-analyst.netlify.app/collection/nhsr-intro/prework/) are written to help with the set up and seem to be working well. 
+
+5 Some people still have this as the default browser due to other NHS program dependencies.
+
+The [FAQ](https://philosopher-analyst.netlify.app/collection/nhsr-intro/faq/#why-does-the-course-use-the-cloud) explains some of the reasoning why I use both (where available).
+
+---
+
+class: inverse, middle, center
+
+# Technical - {xaringan slides}
+
+???
+
+These are {xaringan} and I also recommend {xaringanExtra} for some interactive add ons
+
+---
+
+## Benefits
+
+* Slides resize automatically
+* Getting them from the html site means they are up-to-date
+* The html pages can be downloaded from the [GitHub repository](https://github.com/nhs-r-community/intro_r/tree/gh-pages) 
+* They are accessible and can be read by a screen reader
+
+???
+
+The html files are self-contained which means that they should be available to use offline and without supporting files (like .css or images). 
+
+You can save these in advance of the workshops just-in-case, as the pre-work details for downloading the [data files](https://philosopher-analyst.netlify.app/collection/nhsr-intro/prework/#course-materials) used in the course.
+
+---
+
+class: inverse, middle, center
+
+# Tips and Tricks
+
+---
+
+# So much to learn!
+
+There is a temptation to impart too much of your knowledge
+
+We need a balance of referring to things we can already do and hint at what is possible. 
+
+<img class="center" alt="Toddler wearing bright yellow with her hands on her face peeking through her fingers. Photo by Anna Shvets from Pexels" src=https://images.pexels.com/photos/3771639/pexels-photo-3771639.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 width="30%"/>
+
+
+
+???
+Link to what you and participants know already around SQL/Excel (are common) or statistics packages.
+
+You might get...
+
+> "I do all of this in SQL already, why do I need R?"
+
+Paraphrased quote from a _previous participant to one of the courses_
+
+... so you might wish to explain why R is good for your work, what attracts you to using R?
+
+---
+
+# Live coding
+
+* You'll make mistakes and that's a good thing
+--
+
+* Read out what you type, as you type it 
+
+???
+2 When you read out your code you'll repeat yourself, that's a good thing
+--
+
+* Show when things can go wrong
+
+???
+
+Just be slightly careful that you don't do too much 'incorrect' coding as that may, inadvertently stick, particularly if people are not quite paying attention
+--
+
+* Make your mouse icon bigger on the screen (Windows/Mouse pointer)
+
+???
+If it's possible to show, demonstrate this.
+ 
+--
+
+* If you move your mouse about, try to do it calmly 
+
+???
+
+Give an example of showing something by wiggling around the word on the screen versus highlighting it or just pointing to the word.
+
+---
+
+
+# Highlight new terminology
+
+Example: table
+
+* In SQL it's a "table"
+* In R it's a "data frame" (or "tibble") - these are new concepts
+* Vectors and lists are objects in R
+
+<img class="center" alt="Table and chairs on a pavement. Photo by murat soyluoglu from Pexels" src=https://images.pexels.com/photos/1209776/pexels-photo-1209776.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 width="30%"/>
+
+???
+
+This might be the very first time the person has heard the R vocabulary, or concept so repeating even if that sounds odd to you, is a good thing.
+
+I try not to get into too much detail around vectors and where it says c() for combine I often stumble and say it's a list BUT that a list is a defined thing in R so that's not the right thing to say but vector is not something I've seen before.
+
+---
+
+# Timing
+
+* Take mini breaks 
+* Encourage people to get up and away from the screen
+* Exercises require silence which is uncomfortable 
+
+<img class="center" alt="A sand timer on a newspaper. Photo by Ron Lach from Pexels" src=https://images.pexels.com/photos/39396/hourglass-time-hours-sand-39396.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 width="40%"/>
+
+???
+Everyone benefits from a break.
+
+Timing can be built into RMarkdown using  [{countdown}](https://github.com/gadenbuie/countdown) package. This hasn't (yet!) been added into the workshop slides.
+
+---
+
+# NHS-R Admin team
+
+The lovely NHS-R Community Admin team for example:
+
+* Manage the event
+* Send out the email with links on preparatory work
+* Collate feedback from the event
+* Register attendees and send out certificates of attendance
+
+[<img class="center" alt="Coffee cup in a heart made of beans on a desk. Photo by Jessica Lewis Creative" src=https://images.pexels.com/photos/867470/pexels-photo-867470.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 width="40%"/>](https://www.pexels.com/photo/white-ceramic-mug-filled-with-brown-liquid-on-heart-shaped-coffee-beans-867470/)
+
+---
+
+# It's more than learning R...
+
+It's encouraging people to be part of our community.
+
+We are all part of it and are here to support!
+
+[<img class="center" alt="People in a circle with their hands all reaching to a central point from the circle. Only their hands can be seen. Photo by Dio Hasbi Saniskoro" src=https://images.pexels.com/photos/3280130/pexels-photo-3280130.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 width="40%"/>](https://www.pexels.com/photo/people-doing-group-hand-cheer-3280130/)
+
+
+ 
+---
+
+# Further reading
+
+https://education.rstudio.com/teach/
+
+https://wtf-teach.netlify.app/
