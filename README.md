@@ -108,3 +108,13 @@ Slides created with {xaringan} and I used the `xaringanExtra::use_scribble(pen_c
 * [Slides](https://lextuga007.github.io/Presentations/shape-public-transport/SHAPE-public-transport-time.html#1)
 
 * [Code](https://github.com/Lextuga007/Presentations/tree/main/shape-public-transport)
+
+---
+
+## HDR-UK
+
+HDR-UK Programmes talk on NHS Analyst career.
+
+* [Slides](https://lextuga007.github.io/Presentations/analyst-in-the-nhs/analyst-in-the-nhs.html#1)
+
+* [Code](https://github.com/Lextuga007/Presentations/tree/main/analyst-in-the-nhs)
