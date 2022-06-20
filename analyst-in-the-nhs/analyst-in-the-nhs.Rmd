@@ -1,5 +1,5 @@
 ---
-title: "CDU Data Science Team &mdash; slides"
+title: "CDU Data Science Team &mdash; HDR-UK"
 subtitle: "What does an analyst career in the NHS look like"
 author: "Zoë Turner"
 institute: "Nottinghamshire Healthcare NHS Foundation Trust"
@@ -106,28 +106,51 @@ None of this is to dissuade anyone from doing a degree or a masters, in fact, I'
 
 ---
 
+class: inverse, middle, center
+
 # Benefits of working for the NHS
 
---
+---
 
-* The data
-
---
-
-* The people
-
---
-
-* The changes
+# Data  
+  
+.center2[
+![Picture of a desk with papers with charts, glasses and pens. The paper has a magnifing glass on it over one of the charts](img/pexels-anna-nekrashevich-6801648.jpg)
+]
 
 ???
-Data - I love transforming data and the complexity of healthcare data. I'm pretty sure my analytical skills are transferrable but there is nothing quite like healthcare data in all its messy glory!
+*Data* - I love transforming data and the complexity of healthcare data. I'm pretty sure my analytical skills are transferable but there is nothing quite like healthcare data in all its messy glory!
 
-People - finding the right team matters and working to make the lives of the people around me matters too. I feel strongly that I am a patient, my family and friends are patients and I want these services to be the best they can be. 
+Image: Photo by Anna Nekrashevich: https://www.pexels.com/photo/magnifying-glass-on-top-of-document-6801648/
 
-Changes - We are not exactly start ups in the NHS and things can go exceedingly slowly but working with analysts who have been using R for the best part of 15 years, I hear from them how hard things were then compared to now (thanks to NHS-R Community and PyCom). 
+---
+
+# People
+
+.center2[
+![Photo of a street scene with a lots of people.](img/pexels-davi-pimentel-2064826.jpg)
+]
+
+???
+*People* - finding the right team matters and working to make the lives of the people around me matters too. I feel strongly that I am a patient, my family and friends are patients and I want these services to be the best they can be. 
+
+Image: Photo by Davi Pimentel: https://www.pexels.com/photo/man-wearing-brown-hoodie-2064826/
+
+---
+
+# Change
+
+.center2[
+![Picture of letters cut out of a newspaper spelling out "Use your voice"](img/pexels-polina-kovaleva-6185245.jpg)
+]
+
+???
+
+*Changes* - We are not exactly start ups in the NHS and things can go exceedingly slowly but working with analysts who have been using R for the best part of 15 years, I hear from them how hard things were then compared to now (thanks to NHS-R Community and PyCom). 
 
 It's easy to not to see how far things have changed and how close we are to the cusp of, I hope, momentous change for the analyst profession as a whole.
+
+Image: Photo by Polina Kovaleva: https://www.pexels.com/photo/use-your-voice-inscription-on-gray-background-6185245/
 
 ---
 class: inverse
