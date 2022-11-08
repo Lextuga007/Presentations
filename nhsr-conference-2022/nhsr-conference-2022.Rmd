@@ -299,6 +299,10 @@ I started out not knowing anything about packages but with support now maintain 
 
 ---
 
+class: middle, center
+
+# Any Questions?
+
 ![Picture of chalkboard with several question marks](img/question.jpg)
 
 ---
