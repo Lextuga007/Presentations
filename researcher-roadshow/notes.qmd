@@ -1,0 +1,49 @@
+---
+title: "Notes"
+format: html
+embed-resources: true
+---
+
+## Introduction
+
+Hello I'm Zoë Turner, Senior Data Scientist in the Strategy Unit which is part of NHS Midlands and Lancashire Commissioning Strategy Unit. 
+
+My role is very new as I started in December with the responsibility of providing data science training to analysts and data scientists in the NHS and associated organisations. 
+
+This has included delivering Introduction to R and R Studio training which is a core offering of the NHS-R Community which supports people in R, and other data science tools. 
+
+I've always been involved with the NHS-R Community as a volunteer and now it is part of my job description so I get the opportunity to support the community in various activities related to data science and community building.
+
+My roles up to this point have been in analysis roles in the NHS and Local Authorities, mainly using SQL and Excel.
+
+I love my job because I get to combine being a data scientist with teaching people what I've learned and getting the benefit of others learning through the NHS-R Community. 
+
+I've only recently heard about a process called Reproducible Analytical Pipelines from the Analysis Function in the Government and, whilst I and the teams I've worked with are using many of the principles my role will be about promoting and supporting this across the NHS.
+
+## Panel discussion
+
+A typical day at the moment is a bit hectic as I'm settling into a new role and I came into the post just before the year end when the NHS, like other public bodies, is keen to use up training budget spends. That means I've been training colleagues, preparing materials and also ensuring the financial paperwork is in place around this training.
+
+I also spend a lot of time working on the communications for the NHS-R Community which is an underrated skill in this profession! We are doing incredibly well in promoting and sharing information through various channels like the website for events, YouTube for videos and GitHub for code but there are so many people who are called analysts or who work with data who don't know about the great community they can be a part of.
+
+The team I'm in is very small too as it's very new. Currently we have 3 members with 1 person from the already established Analytics team at the Strategy Unit. What's nice is that we are able to share some of our learning within the Strategy Unit and have set up code reviews and coffee and code sessions which I've enjoyed as it's a chance for me to learn about others' existing coding styles and analysis.
+
+I like to work at the SQL to R data cleaning side of the RAP and I've started building packages in R. 
+
+Data Science key skills are:
+
+* Good communication
+* Curiosity > Initiative
+* Desire to work collaboratively
+
+None of these are technical because the languages and approaches are constantly changing. Good practice can be developed but it can only do that with people working on it so that's why my focus will be on people in this role.
+
+The teams I've worked with have been great as our skills vary as do our backgrounds. I've come from a Philosophy degree with no mathematical qualifications but work with people who studied computer science and psychology. When we studied we didn't have data science degrees - I barely had access to a computer - and I'm teaching people who have had a lot of experience in SQL but want to learn R (perhaps python in the future). 
+
+Everything is changing and so I think it's hard to say a particular technical skill is required.
+
+My original barrier was that I didn't come from a background where analysis was a thing and I didn't know it was even a role I could have. I started as a secretary (and a very poor one at that!) in the NHS which gave me a lot of domain knowledge but little exposure to analysis. The only thing I saw was from Public Health on the rates of older age groups in the population and I was so taken with this but didn't know it could be a job.
+
+Barriers once I was in analysis have been mostly around the analytical profession in the NHS being underfunded, in terms of training, and the scope has been limited to the tools already in use. I've seen those barriers lifted by Chris Beeley, who was my manager in a Provider Trust and is also heading up the newly formed Data Science Team at the Strategy Unit. He has encouraged a learning, sharing and open environment where I've been able to be curious about things, often outside my own organisation. People need time too, to practice but that's incredibly difficult in the analysis and particularly at the moment with the pressures throughout the NHS. 
+
+My hope is that as a community, using NHS-R Community, NHS Pycom and also the Government Data Science Community we can support each other in our learning and analysis.

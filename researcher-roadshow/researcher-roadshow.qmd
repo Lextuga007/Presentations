@@ -1,0 +1,24 @@
+---
+title: "Researcher Roadshow"
+author: "Zoë Turner"
+format: revealjs
+embed-resources: true
+---
+
+### My role
+
+Senior Data Scientist in the NHS supporting [NHS-R Community](https://nhsrcommunity.com/) 
+
+Training in data science skills with the aim to use [Reproducible Analytical Pipelines](https://analysisfunction.civilservice.gov.uk/support/reproducible-analytical-pipelines/)
+
+### Pathway to this role
+
+1. Philosophy degree
+1. A secretary in the NHS
+1. 10 years as an analyst using Excel and SQL
+
+### Key skillsets
+
+* Good communication
+* Curiosity > Initiative
+* Desire to work collaboratively
